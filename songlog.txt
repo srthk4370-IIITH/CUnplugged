@@ -1,0 +1,60 @@
+Add Album add
+Add Album Diddy
+Add Album My Album
+Play Blinding Lights
+Play jawani
+Play F1 theme
+Play SAT
+Add Album diddy
+List Album Diddy
+List Album Diddy
+Exit
+
+
+Add Album Diddy
+Add Album Diddy
+Play SAT
+Play sat
+Play f1 theme
+Play f1 theme
+Play blinding lights
+Exit
+
+
+Play Jawani
+Play SAT
+Add Album My album
+Play Blinding Lights
+Play jawani
+Play F1 theme
+Play SAT
+List Song
+List SongsNext
+Next
+Previous
+Previous
+Remove 2
+Next
+List Song
+List SongsPlay Song At 4Clear Queue
+List Song
+List SongsAdd Album Diddy
+Play SAT
+Play sat
+Play f1 theme
+Play f1 theme
+Play blinding lights
+Exit
+
+
+List Song
+List SongsPlay Small
+Play Blinding Lights
+Next
+Next
+Previous
+Previous
+Previous
+Exit
+
+
