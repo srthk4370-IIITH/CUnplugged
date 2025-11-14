@@ -37,25 +37,38 @@ int equal(char* a, char* b)
 
 void listSongs()
 {
-    FILE* p;
-    p = fopen("songname.txt", "r");
-    if(p != NULL)
+    FILE* p = fopen("songname.txt", "r");
+    if (p == NULL)
     {
-        char read[30];
-        while(fgets(read, 30, p) != NULL)
-        {
-            printf("Song name: %s\n", read);
-            fgets(read, 30, p);
-            printf("Artist: %s\n", read);
-            fgets(read, 30, p);
-            printf("Duration: %s", read);
-        }
+        printf("\033[1;31m⚠️  Couldn't open song library file.\033[0m\n");
+        return;
     }
-    else{
-        printf("MAA KI CHUT");
+
+    printf("\033[38;5;219m╔══════════════════════════════════════════════════════╗\033[0m\n");
+    printf("              \033[1;38;5;219m🎧  SONG LIBRARY\033[0m\n");
+    printf("\033[38;5;219m╚══════════════════════════════════════════════════════╝\033[0m\n\n");
+
+    char read[100];
+    int count = 1;
+    while (fgets(read, sizeof(read), p) != NULL)
+    {
+        read[strcspn(read, "\n")] = '\0';
+        printf("\033[1;36m#%02d\033[0m\n", count++);
+
+        printf("   \033[1;95m♪  Song:\033[0m      \033[38;5;220m%s\033[0m\n", read);
+        fgets(read, sizeof(read), p);
+        read[strcspn(read, "\n")] = '\0';
+        printf("   \033[1;95m👤  Artist:\033[0m    \033[38;5;118m%s\033[0m\n", read);
+        fgets(read, sizeof(read), p);
+        read[strcspn(read, "\n")] = '\0';
+        printf("   \033[1;95m⏱  Duration:\033[0m  \033[38;5;39m%s seconds\033[0m\n", read);
+
+        printf("\033[2m-------------------------------------------------------\033[0m\n");
     }
+
     fclose(p);
 }
+
 
 int songExists(char* n)
 {
@@ -75,5 +88,6 @@ int songExists(char* n)
             fgets(read, 20, p);
         }
     }
+    fclose(p);
     return 0;
 }

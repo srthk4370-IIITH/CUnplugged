@@ -11,6 +11,7 @@ int exists(char *n)
     a = fopen("album.txt", "r");
     if (a != NULL)
     {
+        printf("\n");
         char l[20];
         while (fgets(l, 20, a) != NULL)
         {
@@ -52,7 +53,7 @@ void create(char *al)
             }
             else
             {
-                printf("Song Doesn't exist in the Library\n");
+                printf("\033[1;31m⚠️  Song doesn't exist in the library\033[0m\n");
                 x--;
             }
         }
@@ -75,7 +76,7 @@ void addToAlbum(char *album, char *song)
         while (fgets(l, 20, a) != NULL)
         {
             int f = 0;
-            l[strlen(l)-1]= '\0';
+            l[strlen(l) - 1] = '\0';
             if (equal(l, album))
             {
                 f = 1;
@@ -84,8 +85,8 @@ void addToAlbum(char *album, char *song)
             strcat(data, l);
             fgets(l, 20, a);
             int i = atoi(l);
-            if(f)
-                sprintf(l , "%d", i+1);
+            if (f)
+                sprintf(l, "%d", i + 1);
             else
                 sprintf(l, "%d", i);
             strcat(l, "\n");
@@ -95,7 +96,7 @@ void addToAlbum(char *album, char *song)
                 fgets(l, 20, a);
                 strcat(data, l);
             }
-            if(f)
+            if (f)
             {
                 strcat(song, "\n");
                 strcat(data, song);
@@ -108,7 +109,7 @@ void addToAlbum(char *album, char *song)
     }
     else
     {
-        printf("Song doesn't exist in the library");
+        printf("\033[1;31m⚠️  Song '%s' doesn't exist in the library\033[0m\n", song);
     }
 }
 
@@ -126,13 +127,13 @@ void deleteAlbum(char *al)
         {
             f = 1;
         }
-        if(!f)
+        if (!f)
         {
             strcat(l, "\n");
             strcat(data, l);
         }
         fgets(l, 20, a);
-        if(!f)
+        if (!f)
             strcat(data, l);
         int i = atoi(l);
         for (int x = 1; x <= i; x++)
@@ -150,6 +151,7 @@ void deleteAlbum(char *al)
     a = fopen("album.txt", "w");
     fprintf(a, "%s", data);
     fclose(a);
+    free(data);
     if (!check)
     {
         printf("Album doesn't Exist to delete\n");
@@ -158,39 +160,62 @@ void deleteAlbum(char *al)
 
 void listAlbum(char *n, int all)
 {
-    if(exists(n) || all)
+    if (exists(n) || all)
     {
         a = fopen("album.txt", "r");
         char l[30];
-        while(fgets(l, 30, a) != NULL)
+
+        printf("\033[2J\033[H"); // Clear screen
+        printf("\n\033[1;34m╔══════════════════════════════════════════════╗\n");
+        if (all)
+            printf("║         🎵  ALL ALBUMS IN LIBRARY  🎵         ║\n");
+        else
+            printf("║           🎶  ALBUM DETAILS  🎶              ║\n");
+        printf("╚══════════════════════════════════════════════╝\033[0m\n\n");
+
+        while (fgets(l, 30, a) != NULL)
         {
-            int f;
-            l[strlen(l)-1] = '\0';
-            if(equal(l, n) || all)
+            int f = 0;
+            l[strlen(l) - 1] = '\0';
+            if (equal(l, n) || all)
             {
                 f = 1;
-                printf("Album name: %s\n", l);
+                printf("\n\033[1;33m📀 Album:\033[0m \033[1;97m%s\033[0m\n", l);
+                printf("\033[90m──────────────────────────────────────────────\033[0m\n");
             }
+
             fgets(l, 30, a);
             int i = atoi(l);
-            for(int x=0; x<i; x++)
+
+            for (int x = 0; x < i; x++)
             {
                 fgets(l, 30, a);
-                if(f)
+                if (f)
                 {
-                    printf("Song Name: %s", l);
+                    l[strcspn(l, "\n")] = 0; // remove newline safely
+                    printf("   \033[1;36m♪\033[0m  \033[1;37m%-25s\033[0m\n", l);
                 }
             }
-            if(f && !all)
+
+            if (f)
             {
-                break;
+                printf("\033[90m──────────────────────────────────────────────\033[0m\n");
+                printf("   \033[1;33mTotal Songs:\033[0m \033[1;97m%d\033[0m\n\n", i);
             }
+
+            if (f && !all)
+                break;
         }
+
         fclose(a);
+
+        printf("\033[1;34m╔══════════════════════════════════════════════╗\n");
+        printf("║               ✨ END OF LIST ✨               ║\n");
+        printf("╚══════════════════════════════════════════════╝\033[0m\n");
     }
     else
     {
-        printf("Album Does not exist\n");
+        printf("\n\033[1;31m⚠ Album does not exist!\033[0m\n");
     }
 }
 
@@ -200,12 +225,18 @@ void deleteSong(char *album, char *song)
     {
         int check = 0;
         a = fopen("album.txt", "r");
+        if (!a)
+        {
+            printf("Cannot open album file\n");
+            return;
+        }
         char *data = (char *)malloc(10000);
+        data[0] = '\0';
         char l[20];
         while (fgets(l, 20, a) != NULL)
         {
             int f = 0;
-            l[strlen(l) -1]='\0';
+            l[strlen(l) - 1] = '\0';
             if (equal(l, album))
             {
                 f = 1;
@@ -214,44 +245,49 @@ void deleteSong(char *album, char *song)
             strcat(data, l);
             fgets(l, 20, a);
             int i = atoi(l);
-            if(f && i!=0)
-                sprintf(l, "%d", i-1);
-            else
-                sprintf(l, "%d", i);
-            strcat(l, "\n");
-            strcat(data, l);
+            char *temp = (char *)malloc(20 * i * sizeof(char));
+            temp[0] = '\0';
             for (int x = 1; x <= i; x++)
             {
                 fgets(l, 20, a);
-                l[strlen(l) -1] = '\0';
+                l[strlen(l) - 1] = '\0';
                 if (f && equal(l, song))
                 {
                     check = 1;
                     continue;
                 }
-                strcat(l, "\n");
-                strcat(data, l);
+                strcat(temp, l);
+                strcat(temp, "\n");
             }
+            if (f && check && i > 0)
+            {
+                i--;
+            }
+            sprintf(l, "%d\n", i);
+            strcat(l, temp);
+            free(temp);
+            strcat(data, l);
         }
         fclose(a);
         a = fopen("album.txt", "w");
         fprintf(a, "%s", data);
         fclose(a);
+        free(data);
         if (!check)
         {
-            printf("Song doesn't exist in the album\n");
+            printf("\033[1;31m⚠️  Song '%s' doesn't exist in the library\033[0m\n", song);
         }
     }
     else
     {
-        printf("Song doesn't exist in the library\n");
+        printf("\033[1;31m⚠️  Song '%s' doesn't exist in the library\033[0m\n", song);
     }
 }
 
 void manage()
 {
     char al[20];
-    scanf("%[^\n]", al);
+    scanf(" %[^\n]", al);
     if (exists(al))
     {
         char c[20];
@@ -259,59 +295,61 @@ void manage()
         if (equal(c, "add"))
         {
             char s[20];
-            scanf("%[^\n]", s);
+            scanf(" %[^\n]", s);
             addToAlbum(al, s);
             fprintf(songlog, "Manage %s %s %s\n", al, c, s);
         }
         else if (equal(c, "delete"))
         {
             char s[20];
-            scanf("%[^\n]", s);
+            scanf(" %[^\n]", s);
             deleteSong(al, s);
             fprintf(songlog, "Manage %s %s %s\n", al, c, s);
         }
         else
         {
-            printf("Command not found");
+            printf("\033[1;31m❌ Unknown command:\033[0m \033[1;33m%s\033[0m\n", c);
+            printf("\033[90mType 'help' to see available commands.\033[0m\n");
+
             fprintf(songlog, "Manage %s %s\n", al, c);
         }
     }
     else
     {
-        printf("Album does not exist");
+        printf("Album does not exist\n");
         fprintf(songlog, "Manage %s\n", al);
     }
 }
 
-char** addAlbum(char* n)
+char **addAlbum(char *n)
 {
-    if(exists(n))
+    if (exists(n))
     {
-        int f=0;
+        int f = 0;
         a = fopen("album.txt", "r");
         char l[20];
-        while(fgets(l, 20, a) != NULL)
+        while (fgets(l, 20, a) != NULL)
         {
-            f =0;
-            l[strlen(l) - 1]= '\0';
-            if(equal(l, n))
+            f = 0;
+            l[strlen(l) - 1] = '\0';
+            if (equal(l, n))
             {
-                f=1;
+                f = 1;
             }
             fgets(l, 20, a);
-            l[strlen(l) - 1]= '\0';
+            l[strlen(l) - 1] = '\0';
             int i = atoi(l);
-            char** ar = (char**)malloc((i+1) * sizeof(char*));
-            if(f)
+            char **ar = (char **)malloc((i + 1) * sizeof(char *));
+            if (f)
                 ar[0] = strdup(l);
-            for(int x=1; x<=i; x++)
+            for (int x = 1; x <= i; x++)
             {
                 fgets(l, 20, a);
-                l[strlen(l) - 1]= '\0';
-                if(f)
+                l[strlen(l) - 1] = '\0';
+                if (f)
                     ar[x] = strdup(l);
             }
-            if(f)
+            if (f)
             {
                 fclose(a);
                 return ar;
@@ -322,7 +360,7 @@ char** addAlbum(char* n)
     }
     else
     {
-        printf("Album Doesn't exist\n");
+        printf("\033[1;31m⚠️  Album '%s' doesn't exist in the library\033[0m\n", n);
         return NULL;
     }
 }

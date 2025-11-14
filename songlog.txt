@@ -1,42 +1,34 @@
-Add Album add
-Add Album Diddy
-Add Album My Album
-Play Blinding Lights
-Play jawani
-Play F1 theme
-Play SAT
-Add Album diddy
-List Album Diddy
-List Album Diddy
-Exit
-
-
-Add Album Diddy
-Add Album Diddy
-Play SAT
-Play sat
-Play f1 theme
-Play f1 theme
-Play blinding lights
-Exit
-
-
 Play Jawani
-Play SAT
-Add Album My album
-Play Blinding Lights
+Play Jawani
 Play jawani
-Play F1 theme
-Play SAT
+Play Blinding Lights
+Play JAwani
+Play Jawani
+Play jawani
+List Song
+List Songslist All Songs
+List All Album
+List Album Diddy
+Clear Queue
+Exit
+
+
+Play jawani
+Play Blinding Lights
 List Song
 List SongsNext
-Next
-Previous
-Previous
-Remove 2
-Next
+Clear Queue
 List Song
-List SongsPlay Song At 4Clear Queue
+List SongsPlay Blinding lights
+Clear Queue
+List Song
+List SongsPlay Jawani
+Clear Queue
+Play Jawani
+List Song
+List SongsPlay F1 theme
+List Song
+List SongsClear Queue
 List Song
 List SongsAdd Album Diddy
 Play SAT
@@ -44,17 +36,263 @@ Play sat
 Play f1 theme
 Play f1 theme
 Play blinding lights
+Next
+Next
+List Song
+List SongsClear Queue
+Exit
+
+
+list All Songs
+list All Songs
+Exit
+
+
+list All Songs
+Exit
+
+
+list All Songs
 Exit
 
 
 List Song
-List SongsPlay Small
+List Songslist All Songs
+Exit
+
+
+list All Songs
+Exit
+
+
+list All Songs
+Exit
+
+
+list All Songs
+Exit
+
+
+list All Songs
+Exit
+
+
+Play Blinding Lights
+Exit
+
+
+Play Blinding Lights
+Exit
+
+
+Play Blinding Lights
+Exit
+
+
+list All Songs
+Play Glory
+Play Small
+Exit
+
+
+List Song
+List Songslist All Songs
+Exit
+
+
+list All Songs
+Exit
+
+
+Play Blinding Lights
+Pause
+Exit
+
+
+Play Jawani
+Pause
+Exit
+
+
+Play Small
+Pause
+Exit
+
+
+List All Album
+Exit
+
+
+list All Songs
+Exit
+
+
+Play Small
+Exit
+
+
+Play Blinding Lights
+Play jawani
+Exit
+
+
+Play Blinding Lights
+Play Jawani
+Play F1 theme
+List Song
+List SongsNext
+List Song
+List SongsExit
+
+
+Clear Queue
+Exit
+
+
+Help
+Play Small
+Add Song to File: SAAAA saa 17Play saaaa
+Previous
+Exit
+
+
+Help
+Exit
+
+
+Help
+Exit
+
+
+Help
+Exit
+
+
+Help
+List Song
+List Songslist All Songs
+Play Blinding Lights
+Play jawani
+Next
+Next
+List Song
+List SongsClear Queue
+Play jawani
+Add Album Diddy
+Play SAT
+Play sat
+Play f1 theme
+Play f1 theme
+Play blinding lights
+List Song
+List SongsNext
+List Song
+List SongsExit
+
+
+Help
+list All Songs
+Exit
+
+
+Help
+List All Album
+Add Album My Album
+Play Blinding Lights
+Play jawani
+Play F1 theme
+Play SAT
+List Song
+List SongsPlay Saaaa
+Next
+Previous
+Previous
+List Song
+List SongsPrevious
+List Song
+List SongsClear Queue
+Add Album My Album
+Play Blinding Lights
+Play jawani
+Play F1 theme
+Play SAT
+List Song
+List SongsClear Queue
+Help
+list All Songs
+Exit
+
+
+Help
+Manage  My Album
+Exit
+
+
+Manage  My A
+Exit
+
+
+Manage  My Album
+Exit
+
+
+Manage my Album add  f1 theme
+List All Album
+Manage My ALbum f1
+Manage My Album add  f1 theme
+Exit
+
+
+Manage My Album add f1 theme
+
+Help
+List Album My Album
+Exit
+
+
+Help
+Add Album adjnad
+Play afad
+Exit
+
+
+Help
+Next
+Previous
+Exit
+
+
+Help
+Next
+Play Blinding Light
 Play Blinding Lights
 Next
+Previous
+Play Jawani
 Next
+Exit
+
+
 Previous
+Play Blinding Lights
 Previous
-Previous
+Exit
+
+
+Help
+List All Album
+Exit
+
+
+Help
+List All Album
+Exit
+
+
+List All Album
+list All Songs
+Play oo Antava
+Play ooantava
 Exit
 
 
