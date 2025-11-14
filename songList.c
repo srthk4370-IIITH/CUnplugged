@@ -595,7 +595,7 @@ void *input(void *arg)
     }
 }
 
-void main()
+int main()
 {
     songlog = fopen("songlog.txt", "a");
     if (!songlog)
@@ -623,4 +623,5 @@ void main()
 
     pthread_join(t1, NULL);
     pthread_join(t2, NULL);
+    return 0;
 }
